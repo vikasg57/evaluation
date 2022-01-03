@@ -1,5 +1,5 @@
 var cart=JSON.parse(localStorage.getItem("dish")) || []
-var price= JSON.parse(localStorage.getItem("newprice")) || []
+
 
 let total =document.querySelector('.count')
 total.textContent= `Number of dishes -${cart.length}`
@@ -11,7 +11,7 @@ ondisplay(cart)
 
 function ondisplay(cart){
     console.log(cart)
-    console.log(price)
+   
     
     document.querySelector('.main').innerHTML=null
 
@@ -29,7 +29,7 @@ function ondisplay(cart){
            random=Math.floor(Math.random()*500+100)
 
         let price=document.createElement('h4')
-        price.innerHTML= "₹ "+random
+        price.innerHTML= el.price
 
         let button=document.createElement('button')
         button.innerHTML="remove"
