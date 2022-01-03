@@ -1,4 +1,5 @@
 var cart=JSON.parse(localStorage.getItem("dish")) || []
+var price= JSON.parse(localStorage.getItem("price")) || []
 
 let total =document.querySelector('.count')
 total.textContent= `Number of dishes -${cart.length}`
@@ -13,6 +14,7 @@ function ondisplay(cart){
     
     document.querySelector('.main').innerHTML=null
 
+
     cart.map(function(el,i){
 
        
@@ -26,7 +28,7 @@ function ondisplay(cart){
            random=Math.floor(Math.random()*500+100)
 
         let price=document.createElement('h4')
-        price.innerHTML=random
+        price.innerHTML= "₹ "+random
 
         let button=document.createElement('button')
         button.innerHTML="remove"
@@ -34,6 +36,13 @@ function ondisplay(cart){
             console.log(i)
             removecart(i)
         })
+
+    //         price.map(function(el,i){
+    //      let price=document.createElement('h4')
+    //     price.innerHTML=price.el
+
+    // })
+
 
         div.append(images,title,price,button)
 
