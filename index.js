@@ -19,6 +19,7 @@ async function getdishes(){
 }
 
 var cart= JSON.parse(localStorage.getItem("dish")) || []
+var price= JSON.parse(localStorage.getItem("price")) || []
 
 
 function ondisplay(arr){
@@ -35,17 +36,27 @@ function ondisplay(arr){
         let title=document.createElement('h2')
         title.innerHTML=el.strMeal
 
-        random=Math.floor(Math.random()*500+100)
+        var random=Math.floor(Math.random()*500+100)
 
         let price=document.createElement('h4')
-        price.innerHTML=random
+        price.innerHTML= "₹ "+random
+
+        function priceobj(random){
+            this.price=random
+        }
+
+        let price1 = new priceobj(random)
 
         let button=document.createElement('button')
         button.innerHTML="add to cart"
         button.addEventListener('click',function(){
+            console.log(price1)
             console.log(el)
-            tocart(el)
+            tocart(el,price1)
+
+            window.location.href="cart.html"
         })
+
 
         div.append(images,title,price,button)
 
@@ -56,10 +67,15 @@ function ondisplay(arr){
 }
 
 
-function tocart(el){
+function tocart(el,price1){
+    price.push(price1)
+
     cart.push(el)
     localStorage.setItem("dish",JSON.stringify(cart))
+        localStorage.setItem("newprice",JSON.stringify(price))
     console.log(cart)
 }
+
+document.querySelector('.nav').textContent=`cart :${cart.length}`
 
 

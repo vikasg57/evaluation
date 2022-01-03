@@ -1,5 +1,5 @@
 var cart=JSON.parse(localStorage.getItem("dish")) || []
-var price= JSON.parse(localStorage.getItem("price")) || []
+var price= JSON.parse(localStorage.getItem("newprice")) || []
 
 let total =document.querySelector('.count')
 total.textContent= `Number of dishes -${cart.length}`
@@ -11,6 +11,7 @@ ondisplay(cart)
 
 function ondisplay(cart){
     console.log(cart)
+    console.log(price)
     
     document.querySelector('.main').innerHTML=null
 
@@ -37,9 +38,9 @@ function ondisplay(cart){
             removecart(i)
         })
 
-    //         price.map(function(el,i){
-    //      let price=document.createElement('h4')
-    //     price.innerHTML=price.el
+        //     price.map(function(el,i){
+        //  let price=document.createElement('h4')
+        // price.innerHTML=price.el
 
     // })
 
